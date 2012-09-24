@@ -29,8 +29,6 @@ RPROMPT='%{$fg[white]%} $(~/zsh/bin/git-cwd-info)%{$reset_color%}'
 setopt menucomplete
 
 alias ls='ls --color=auto'
-#alias dir='dir --color=auto'
-#alias vdir='vdir --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
@@ -39,10 +37,9 @@ alias egrep='egrep --color=auto'
 alias ll='ls -alF'
 alias la='ls -lAh'
 alias l='ls -lFhA'
-#alias a='$HOME/capture_utils/cli/apid-cli.rb'
-#alias setTime='bash $HOME/setTime'
 alias g='ack-grep'
 alias red='redis-cli'
+bindkey -M viins 'jk' vi-cmd-mode
 
 set -o vi
 
