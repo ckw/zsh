@@ -12,14 +12,19 @@ if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
 autoload -U colors
 colors
 setopt prompt_subst
+set -o vi
+bindkey -M viins 'jk' vi-cmd-mode
 
 # Prompt
 local smiley="%(?,%{$fg[green]%}☺%{$reset_color%},%{$fg[red]%}☹%{$reset_color%})"
 
+vim_ins_mode="%{$fg[cyan]%}[I]%{$reset_color%}"
+vim_cmd_mode="%{$fg[yellow]%}[N]%{$reset_color%}"
+vim_mode=$vim_ins_mode
+
 PROMPT='
 %~
-${smiley}  %{$reset_color%}'
-
+${smiley} %{$reset_color%}${vim_mode} '
 RPROMPT='%{$fg[white]%} $(~/zsh/bin/git-cwd-info)%{$reset_color%}'
 
 # Replace the above with this if you use rbenv
@@ -39,9 +44,19 @@ alias la='ls -lAh'
 alias l='ls -lFhA'
 alias g='ack-grep'
 alias red='redis-cli'
-bindkey -M viins 'jk' vi-cmd-mode
 
-set -o vi
+  function zle-line-finish {
+   vim_mode=$vim_ins_mode
+#    zle reset-prompt
+}
+
+function zle-keymap-select {
+  vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
+  zle reset-prompt
+}
+
+zle -N zle-keymap-select
+zle -N zle-line-finish
 
 
 # Load completions for Ruby, Git, etc.
