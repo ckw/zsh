@@ -51,6 +51,9 @@ alias la='ls -lAh'
 alias l='ls -lFhA'
 alias g='ack-grep'
 alias red='redis-cli'
+alias pu='pushd'
+alias po='popd'
+alias zk='/usr/share/zookeeper/bin/zkCli.sh'
 
   function zle-line-finish {
    vim_mode=$vim_ins_mode
