@@ -8,6 +8,7 @@
 # RVM
 if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
 
+export TERM=xterm-256color
 # Colors
 autoload -U colors
 colors
@@ -49,10 +50,12 @@ alias egrep='egrep --color=auto'
 alias ll='ls -alF'
 alias la='ls -lAh'
 alias l='ls -lFhA'
-alias g='ack-grep'
+alias ag='ack-grep'
 alias red='redis-cli'
 alias pu='pushd'
 alias po='popd'
+alias L='less'
+alias g='git'
 alias zk='/usr/share/zookeeper/bin/zkCli.sh'
 
   function zle-line-finish {
