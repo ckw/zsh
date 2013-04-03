@@ -20,6 +20,8 @@ SAVEHIST=10000
 HISTFILE=~/.zsh_history
 setopt HIST_IGNORE_DUPS
 setopt HIST_FIND_NO_DUPS
+setopt auto_cd
+setopt auto_pushd
 bindkey '^R' history-incremental-search-backward
 bindkey -M viins 'jk' vi-cmd-mode
 
@@ -52,8 +54,9 @@ alias la='ls -lAh'
 alias l='ls -lFhA'
 alias ag='ack-grep'
 alias red='redis-cli'
-alias pu='pushd'
-alias po='popd'
+
+alias P='pushd'
+alias p='popd'
 alias L='less'
 alias g='git'
 alias zk='/usr/share/zookeeper/bin/zkCli.sh'
